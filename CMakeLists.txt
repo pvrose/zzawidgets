@@ -49,10 +49,12 @@ ExternalProject_Add(zzacommon
   SOURCE_DIR ${CMAKE_SOURCE_DIR}/zzacommon
   CMAKE_ARGS
     -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}/zzacommon/install
+    -DCMAKE_ENABLE_EXPORTS=ON
 )
 
 set(CMAKE_BUILD_RPATH ${CMAKE_CURRENT_BINARY_DIR})
 add_library(${TARGET} STATIC)
+add_dependencies(${TARGET} zzacommon)
 target_include_directories(${TARGET} PRIVATE 
   ./include
   ${CMAKE_SOURCE_DIR}/zzacommon/include
